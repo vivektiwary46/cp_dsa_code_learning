@@ -1,0 +1,22 @@
+1) WHAT IS LINKED LIST?
+Imagine you are given a task where you have to maintain a data entry of cars entering a parking lot. Since the number of cars entering will be different and may change daily, constructing a fixed-sized data structure like an array might not be helpful. This is when linked lists come into the picture, which allows us to add and remove cars easily. Linked List is a linear data structure that can be visualized as a chain with different nodes connected, where each node represents a different element. The difference between arrays and linked lists is that, unlike arrays, the elements are not stored at a contiguous location.
+
+so, linked list is a data structure where elements (called nodes) are connected one after another using links (pointers). Each node contains a) Data → the actual value b) Pointer/Link → address of the next node.
+
+[10 | next] → [20 | next] → [30 | null], first node has value 10 and next will store the memory address of the next node which has value 20 as next is a pointer which stores memory address, now similarly all the nodes will be connected and the last node will point to null.
+
+The first node created in linked list is called the head and the last node is called the tail.
+see ll1.cpp
+2) INSERT AT THE HEAD OF THE LINKED LIST : To insert a new node with a value before the head of the list, create a new node with the given value and point the new node to the head. This node will be the new head of the linked list.
+see ll2.cpp
+
+NOTE : kabhi bhi linked list ko return karna hai toh uska head return kar dete hai just.
+
+3) DELETE TAIL OF THE LINKED LIST : see ll3.cpp
+4) FIND THE LENGTH OF A LINKED LIST : see ll4.cpp
+5) SEARCH IN A LINKED LIST : see ll5.cpp
+
+6) WHAT IS A DOUBLY LINKED LIST?
+A significant characteristic of singly linked lists is their unidirectional nature, allowing traversal in only one direction i.e forward. Moving backward, such as going from node at 3rd position to node at 1st position is not possible because each node in a singly linked list holds two pieces of information: the data (an integer value in this case) and a pointer that indicates the address of the next node. This structure enables efficient forward navigation, but the absence of a backward pointer restricts reverse traversal.
+Hence we use doubly linked list in which each node points to both it's next node and it's back or previous node, hence while constructing the node we make two pointers next and prev/back, hence it allows 2 way traversal.
+see ll6.cpp 

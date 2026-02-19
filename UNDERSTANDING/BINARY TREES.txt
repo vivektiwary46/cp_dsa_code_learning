@@ -1,0 +1,105 @@
+NOTE : A)FOR BOTH BINARY TREE AND BINARY SEARCH TREE, ALL THE TRAVERSALS ARE VERY IMPORTANT INCLUDING THE VERICAL ORDER TRAVERSAL AND MORRIS TRAVERSAL AS IN MOST OF THE QUESTIONS WE NEED TO DO TRAVERSALS TO GET THE SOLUTION. ALSO BEING GOOD WITH RECURSION IS IMPORTANT AS IN MANY QUESTIONS WE NEED TO DO RECURSION, ALSO THE DFS TRAVERSALS LEARNT IN THIS CHAPTER USES THE "RECURSION".
+
+B)MANY QUESTIONS IN BINARY SEARCH TREE ALSO GET SOLVED BY TRAVERSALS, ALSO WE KNOW INORDER IS SORTED IN BST SO THIS PROPERTY IS USED MANY TIMES, BUT DIRECTLY FINDING INORDER AND STORING IT IN VECTOR TAKES EXTRA SPACE SO INSTEAD OF USING THIS PROPERTY WE CAN SOLVE THE QUESTION USING TRAVERSALS, AS WE ALSO THE PROPERY OF BST WHICH MAKES IT BST WHICH HELPS MANY TIMES, ALSO WITH NEXT AND BACK FUNCTION (AS READ IN 32 OF COPY) WE CAN GET HOLD OF INORDER AND ALSO INORDER IN DESCENDING ORDER WITH LESS SPACE SO THIS CAN ALSO BE USED MANY TIMES.
+
+1)Binary Tree : It is a data structure whose each node has at max 2 children. The first node or the starting node of the binary tree is called the ROOT NODE. All the nodes in the last level are called LEAF NODES. For any node the adjacent nodes connected to it are called the CHILDREN. For any node the parent node of it or the parent of the parent node, or even the immediate parent are all called as ANCESTOR.
+
+2)TYPES OF BINARY TREE : 
+A)Full Binary Tree : when all the nodes have either 2 or 0 children.
+
+B)Complete Binary Tree : when all the levels of the binary tree are filled and the last level can be unfilled but all the nodes in the last level should be on the left, it should not be that some nodes are there on left and some are on right and there is a gap.
+
+C)Perfect Binary Tree : all the leaf nodes should be on the same level.
+
+D)Balanced Binary Tree : the height of the binary tree should be at max log(N) where N is the number of nodes in the binary tree.
+
+E)Degenerate Binary Tree : if the number of nodes is n then the height of the tree is also n, i.e. all the nodes have a single child.
+for above L1 021.can be seen of striver tree playlist.
+
+3)REPRESENTATION OF A BINARY TREE : 
+struct Node 
+{
+    int data;
+    Node* left;
+    Node* right;
+    // Constructor to initialize
+    // the node with a value
+    Node (int val)
+    {
+        data = val;
+        left = right = NULL;
+    }
+};
+understand Node like int and if we write Node *root then root here is just a pointer variable. At this moment, it does not point to any node. Its value is uninitialized (i.e., it contains garbage). But if you write Node *root = new Node(10) then now, root points to a Node containing data = 10, and left = right = NULL, also you can give data to its left and right , by root->left = new Node(11), root->right = new Node(12).
+
+4)PREORDER, INORDER, POSTORDER TRAVERSAL IN A BINARY TREE (DFS) : Read copy notes written and see the code in binarytree2.cpp, binarytree3.cpp, binarytree4.cpp, normal recursion is used.
+
+5)LEVEL WISE TRAVERSAL IN BINARY TREE (BFS) : This is implemented using a queue, queue mein root element ka pointer dalte hai phir uska left aur right ka pointer dalte hai to get printed all the level nodes. see binarytree5.cpp
+
+6)ITERATIVE PREORDER, INORDER AND (POSTORDER USING ONE STACK AND TWO STACK) AND ALL INORDER, PREORDER, POSTORDER IN ONE TRAVERSAL : SEE VIEDO 9-13 OF STRIVER TREE SERIES  - SMALL VIEDOS ARE THERE, TUF DOCUMENT CAN ALSO BE READ - STACK IS USED TO DO ITERATIVE TRAVERSAL.
+
+7)HEIGHT OF BINARY TREE : The height of a binary tree is the length of the longest path from the root node down to the farthest leaf node. "Length" here refers to the number of edges on the path, It is calculated using normal recursion, see the code below : 
+NOTE : if there is only a single node then we are considering it's height as one.
+class Solution 
+{
+public:
+    //TC : O(N) , SC : O(N) -> it is the auxilary stack space, where 
+    //N is the number of nodes.
+    int maxDepth(TreeNode* root) 
+    {
+        if (root == NULL) return 0;
+
+        int lh = maxDepth(root->left);
+        int rh = maxDepth(root->right);
+        
+        return 1 + max(lh, rh);
+    }
+}; SC is worst O(N) as there can be a skew or degenerate tree.
+
+8)DIAMETER OF A TREE : Maximum number of edges present between two edges in a binary tree. More than one diameter can exist in a binary tree and the diameter path should not necessarily pass through the root node, also diameter is not unique. we also find diameter of a tree using normal recursion, see the code below : 
+    int f(TreeNode *root, int &maxi)
+    {
+        if (root == NULL) return 0;
+
+        int lh = f(root->left, maxi);
+        int rh = f(root->right, maxi);
+
+        maxi = max(maxi, lh + rh); //here for each node when lh and rh is calculated the diameter passing from that
+        node will be lh+rh so i calculated this for every node and then found the maximum of those.
+
+        return 1 + max(lh, rh);
+    }
+    int diameterOfBinaryTree(TreeNode* root) 
+    {
+        int maxi = 0;
+        f(root, maxi);
+        return maxi;
+    }
+//TC : O(N) as we are visiting all the nodes, N = number of nodes.
+//SC : O(N)
+
+9)SAME TREE : Two tree are identical if their "STRUCTURE" and "NODES HAVE SAME VALUE". see code below, used simple recursion.
+bool isSameTree(TreeNode* p, TreeNode* q) 
+    {
+        if (p == NULL || q == NULL) return (p == q);
+
+        return (p->val == q->val) 
+        && isSameTree(p->left, q->left)
+        && isSameTree(p->right, q->right);
+    }
+10)VERTICAL ORDER TRAVERSAL : see copy to know what it wants to be printed and see the code in binarytree6.cpp.
+
+11)TOP/BOTTOM VIEW OF BINARY TREE : see copy to know the approach and can see code submitted at gfg and can also see on striver website.
+
+12)RIGHT/LEFT SIDE VIEW OF BINARY TREE : see copy to know the approach and see code in copy as well as can be seen in the striver website.
+
+13)SYMMETRIC TREE : see copy to know the approach and can see code in striver website or the one submitted on leetcode.
+
+14)ROOT TO NODE : see copy to know the approach and can see code in striver website or the one submitted on Naukri.
+
+15)LOWEST COMMON ANCESTOR : see copy to know the approach and can see the code in striver website or the one submitted on leetcode.
+
+FROM HERE FOR ALL THE REST OF THE TOPICS SEE COPY.
+
+PATTERNS AND LEARNINGS FOR TOPIC :
+1)

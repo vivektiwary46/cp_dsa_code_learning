@@ -1,0 +1,110 @@
+DATABASE
+1) Before processing any data it is very important to understand that how the data will be structure or say arranged or say organised in our database(ki database mein kon kon sa field store karenge and how it will be organised or structured, like agar registration page banana hai toh username, dob ye sab field store karna hoga), and this is called data modeling. In big firms there are not only backend developers but also there are data modeling experts which help the team by structuring or say organising the data, once it is done we can further process the data.
+
+2) MONGODB : MongoDB is a NoSQL database that stores data in a document-based format instead of tables and rows. Data is stored as documents (JSON-like objects called BSON) and documents are grouped into collections and these collections belong to a database, so mogodb is basically a database which stores data.
+
+3) MOGOOSE : Mongoose is an Object "Data Modeling" (ODM) library for MongoDB in Node.js. It acts as a bridge between your Node.js code and MongoDB. It helps nodejs code to interact with mongodb.
+
+4) MOON MODELER : Moon Modeler and Mongoose both do “data modeling”, but they are used at completely different stages and for different purposes. 
+Moon Modeler is a visual database design tool. Used to design database structure visually, it is not a code based modeling.
+Mongoose is a runtime library used inside a Node.js application. Used to interact with MongoDB, it is a code based modeling.
+But note : moon modeler is so compatible with mongoose that it gives the mongoose code also along with visual data modeling. 
+
+5) ERASE IO : This is also a data modeling tool to model data visually but yes uska code bhi mil jayega but it is not for mongoose so the code generated after visually modeling the data will be different from mongoose code.
+
+6) MODEL FOLDER
+In a backend project, the models folder contains the data models of your application — usually the structure of your database data and the logic related to it. Think of the models folder as the place where you define how your data looks and behaves.
+In each file of model, it should have the following :
+a) Database schemas
+Defines fields, types, and rules for data.
+Example (MongoDB + Mongoose):
+// models/User.js
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+});
+
+module.exports = mongoose.model("User", userSchema);
+
+b)Data validation rules
+Ensures correct data is stored:
+required fields
+data types
+default values
+constraints
+Example:
+email: { type: String, required: true, unique: true }
+etc.
+
+7) We generally do not store images, PDFs, or other large files directly in a database because they significantly increase the database size and slow down performance. Even though MongoDB is a powerful and flexible database, storing large binary files in it is not considered a good practice for most applications.
+
+Instead, these files are uploaded to external storage services such as cloud storage platforms (for example, AWS S3, Cloudinary, Firebase Storage, etc.). These platforms are optimized for handling large files and provide secure URLs or SDKs to access them.
+
+We then store only the file link or reference (URL) in the database. This keeps the database lightweight, fast, and efficient, while still allowing the application to access and display the files whenever needed.
+
+8) MONGODB ATLAS :MongoDB Atlas is a cloud-based managed MongoDB service provided by MongoDB itself. It allows developers to use MongoDB without installing, managing, or maintaining the database infrastructure. With Atlas, we can deploy and connect MongoDB databases on supported cloud platforms such as AWS, Google Cloud Platform, and Microsoft Azure only.
+
+9) CONNECT TO DATABASE
+a) we can write the connection code to connect to our database in index.js itself or we can write it in some other file and then call it in index.js.
+
+10) To get any data from database it takes time so it is an asynchronous operation so it should be handled with try-catch.(Read web development point number 14) 
+
+11) db.js = in this the code to get connected with database is written with the help of moongose framework.
+
+12) QUERY : A database query is how your backend asks the database to read or change data. Why queries are needed
+Databases store huge amounts of data. A query tells the database exactly what you want.
+Examples: Give me all users, Find user with id = 10, Update this user’s email, Delete inactive accounts.
+
+13) PAGINATION : Pagination is the technique of splitting large amounts of data into smaller chunks (pages) instead of sending everything at once. Why pagination is needed Imagine a database with 1,000,000 records. Without pagination : Server sends all records, Huge response size, Slow API, High memory usage, Bad user experience
+With pagination : Server sends only what is needed, Fast responses, Scales well.
+
+14) AGGREGATION PIPELINE : An aggregation pipeline is a step-by-step data processing pipeline in MongoDB where: Documents(BSON FOrmat Files) go through multiple stages, and each stage transforms the data. Think of it like an assembly line for data. Why aggregation pipeline exists Normal queries (like .find()) can: Filter, Sort, Limit But cannot: Join collections Group data Compute totals, averages Reshape documents. Aggregation pipeline is used for complex data processing. MongoDB database mein sara data is stored in bson format file, now itne sare files mein se kuch specific files chahiye tumhe then how will you get it, without aggregation pipeline it will be hard to filter out files with some specific charaters or details so that's why we write aggregation pipelines for complex data processing and for this also we write several database operators(see 18) for which we can watch video 20 and 21 of hitesh Chaudhary to know about aggregation pipelines.
+
+15) MONGOOSE-AGGREGATE-PAGINATE-V2 : It is a node package managed by npm. In MongoDB + Mongoose, the normal .find() pagination is easy, but pagination with aggregation pipelines is painful, mongoose-aggregate-paginate-v2 solves exactly that. So now you write all the aggregation queries if you have this package installed.
+
+16) METADATA : It is the data about the data, the data which we get from database, it gives the context of that data. Example : 
+{
+  "data": [
+    { "id": 1, "name": "Vivek" },
+    { "id": 2, "name": "Amit" }
+  ],
+  "metadata": {
+    "page": 2,
+    "limit": 10,
+    "totalPages": 5,
+    "totalRecords": 48,
+    "hasNextPage": true
+  }
+}
+
+17) MONGOOSE MIDDLEWARE : Mongoose provides middleware (hooks) that run both before and after database operations, including when data is read from the database. These are called pre and post middleware.
+What is Mongoose middleware? Mongoose middleware lets you run custom logic: Before a DB operation and after a DB operation Think of it as a processing layer around database actions. 
+
+18) DATABASE OPERATORS : Database operators are special keywords/symbols provided by a database system (MongoDB, SQL, etc.) that tell the database how to query, update, delete, or transform stored data. They directly help in changing or reading data stored in the database, but in a controlled, expressive way.
+Controller: decides WHAT should happen
+Database operators: decide HOW data should be changed or queried
+When writing logic in controllers, at some point you need "database operators" to actually modify stored data.
+Client → Route → Controller (logic) → Database (operators used here)
+Without database operators modifying the db data is slower and we need to do multiple operations, hence database operators are preferred and also these operators make operations atomic, efficient and concurrent safe.
+
+await User.findByIdAndUpdate(
+    id,
+    { $inc: { loginCount: 1 } }
+)
+$inc → database operator
+Database updates value atomically
+Faster & safer
+Mostly database operators starts with $, we can read about several database operators from internet.
+SQL uses operators too, just different syntax:
+UPDATE users
+SET points = points + 10
+WHERE id = 5;
+This is the same idea as $inc.
+
+19) MONGODB AND SQL DATABASE UNDERSTANDING 
+In MongoDB database, data is stored as documents (BSON(binary json) format) inside collections, whereas in SQL databases data is stored as rows inside tables.
+In MongoDB database, whenever we insert new data, a 'new document' is created for that data. We can later update or delete fields within that document, or delete the entire document.
+Unlike SQL tables, MongoDB documents are independent and schema-flexible, and updates usually modify existing documents rather than creating new ones.

@@ -1,0 +1,53 @@
+Learnings of DP AND 6 IS A LEARNING OF RECURSION.
+//NOTE :- Any code which you have submitted of dp from the striver 455 sheet, if the leetcode link of the problem is not given in the sheet, then the problem must have been submitted on Naukri.
+1) First read pdf 19 kept in the file which is introduction to dynamic programming and lecture 7 of recursion playlist of striver dekh sakte ho to know kis pattern pe question ata hai recursion mein.
+
+2) Rules to write recurrence relation 
+   a)try to represent the problem in terms of index or indexes in some cases and state ki wo function kya return
+     karega, ya wo dp ka state kya store karega.
+   b)do all the possible stuff on those index according to the problem statement -> all the possibility in the sense
+     ki uska recursion tree banao aur usme overlapping subproblem dhundho and also as dp ka question hai so optimal
+     substructure toh hona hi chahiye.
+   c)upar dono step karne ke bad, memoization ya tabulation laga dena.
+   d)memoization lagane ke liye the trick is to look for the index or indexes which is changing and memoization and tabulation
+     dono lagane ke liye you need the recursion tree.
+   e)jab bhi ind, ind-1, ya ind-2 types ho tab hamesha hi space optimization laga sakte hai to O(1).
+   f)jab tabulation karna ho toh jo memoization ke time f use kie ho bas usko dp bana do and tabulation ke time utna                         hi loops banega jitna dimension hai dp ka always (how to place these loops is important) and also jo memoization ke time relation likhe ho, the recursive realtion usko as it is copy paste kar do inside the loops, like kabhi kabhi recursive realtion jo likha hoga wo bhi loop mein hoga, toh us pure ko as it is inside the tabulation wala loop mein copy kar dena and f ke jagah dp use karna and also before all this jo memoization wale code ka base case hoga usko bhi tabulation ke terms mein translate kar dena before proceeding.
+   f)if question says count all the ways -> do sum of all the possible stuff
+   g)if question says find minimum -> take the minimum of all the possible stuff.
+   h)if question says find maximum -> take the maximum of all the possible stuff.
+
+IMP : A) what does this statement return dp[i][j] = mini (or say max(take, notake) mean, this means ki store something in dp[i][j] and then return the value stored in dp[i][j], i.e. returning essentially dp[i][j] itself and ye return hamlog koi waiting function ko karenge in stack and jo intial call kie honge in main so jab sare function call khatam ho jayega tab jo intial function call demand kar raha hoga uska value dp table mein store hoga jab finally return dp[i][j] call hoga for the intial function and wo dp[i][j] mein value ko store karke dp[i][j] hi return kar dega intial function ko aur wo usko cout kar dega depending on the function type say int or vector or 
+anything.
+B)Kisi bhi question ke liye recursion tree banao, dp table banao, this is important.
+
+3) Whenever we don't have uniformity in the values, i.e. if it is increasing then it will keep increasing (take example of minimun path sum question of leetcode), then in that case we can't used greedy as today's decision of taking some value might affect us in the future, and hence we can use dp in such cases.	
+
+4) dp on grids ka agar koi problem aye aur start kaha se karna hai wo fixed hai toh memiztion wale code mein hamlog
+usi point as top down jayenge and solve karenge but tabulation wale code mein uske just opposite side ko as bottom up jake solve karenge, like agar fixed point 0 hai toh top down from 0 and bottom up from n-1.
+
+5) A general statement but mostly works : whenever you write the code of recurrence(memoization), we used top down, so in that case try to form recursion tree from n-1 to zero, but in the case of tabulation, just do it with 0 to n-1 and while doing tabulation see the code of recursion, and then try to think how do we replicate the same base case as used in recurrence to tabulation and then just copy paste the recurrence relation into tabulation and inplace of  f write dp and tabulation mein utna hi loops hoga jitna dp ka dimension hai.
+
+6) In case of count problems as told in recursion that in base case always return 1 and return 0 happens, so in such cases think in that direction and in case of return true or false statement in base case true or false has to be returned -> LEARNING OF RECURSION.
+
+7) For 0/1 knapsack concept watch dp19 video of striver -> it's problem statement : You are given ‘n’ items with certain ‘profit’ and ‘weight’ and a knapsack with weight capacity ‘w’. You need to fill the knapsack with the items in such a way that you get the maximum profit. You are allowed to take one item only one time and incase of "UNBOUNDED KNAPSACK", you can pick one element multiple times and the rest problem statement is same. see code of unbounded knapsack which you submitted here : https://www.naukri.com/code360/problems/unbounded-knapsack_1215029
+
+8) Whenever you have infinite supply of anything, like if we could take a coin worth 5 any number of time then, while calling the take part stand at the same index, don't go ind-1, like in this case, in take part call as take = f(ind, ......) and not f(ind-1, ......) and in this case while writing tabulation also be do the same and also while optimizing the tabulation approach(if possible) in the take part we might have to use the curr array and not the prev/dp array.
+
+9) Jab lcs likhte hai toh backtrack karte waqt dp array jo tabulation ke waqt banaye the usko analyse karna to print the lcs.
+
+10) If you know core concept of longest commong subsequence, you can solve many variations of it, like longest common substring, lps, minimun insertions to make a string palindrome.
+
+11) For dp on strings, if we need to backtrack and print things then analyse and use the dp table.
+
+12) while dealing with dp on strings if in base case of memoization solution i or j is <0 then you can't translate that base case while writing the tabulation code, so shit the index by 1 so that i < 0 becomes i == 0 and you can translate the code in tabulation.
+
+13) Whenever you get question on dp on strings and two strings are involved try with a intuition that what in both strings can be kept constant and then try to complete what is asked in the question, this can be a way and the other way can be that start doing the string matching in order to get to the required output.
+
+14)Partition DP : Whenever we need to find the answer to a large problem such that the problem can be broken into subproblems and the final answer varies due to the order in which the subproblems are solved, we can think in terms of partition DP, for example in case of mcm, the order in which we multiply the series of matrices, i.e. the place where we partition it is important to get the most optimal number of multiplications.
+
+15)Matrix chain multiplication : it is just one of the partition dp problem, the code for this can be seen in the following link : https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1 or see dp6.cpp.
+
+16)
+ 	
+

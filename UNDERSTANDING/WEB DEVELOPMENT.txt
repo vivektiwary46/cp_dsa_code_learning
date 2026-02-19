@@ -1,0 +1,232 @@
+WEB DEVELOPMENT LEARNING
+
+1) NODE JS AND EXPRESS JS
+a)Express.js is a minimal and flexible web application framework for Node.js. While Node.js allows you to run JavaScript on a server, writing a web server using only "vanilla" Node.js requires a lot of manual code to handle different URLs (routes), manage cookies, and parse data, hence express framework is used, since it is a framework it gives a structure and then we can build the business logic for it.(Read general info 1)
+b) jab frontend se koi request(like get, pull, post etc) ata hai toh usko listen(we might have to listen on several places such as / : home route, /login : login setup etc.) karke response bhejne ka kam express is karta hai.
+c)express framework mein jo ye syntax use karte hai
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+in this req and res is imp as express ka kam hi hai req ko listen karke res bhejna, so res. and req. karke bahut sare methods hai which are useful which can be read from it's doucmentaion with their uses.
+
+
+2) NPM(NODE PACKAGE MANAGER)
+a)It is a system that holds different frameworks such as express, nextjs etc. Version Control: Every NPM module has a version number (like 1.0.4), so you can ensure your project always uses a version that works.
+Dependencies: NPM modules often rely on other NPM modules. When you install one, NPM automatically downloads the entire "tree" of required code. //wait for now we can understand about it more later.
+b) Packages under it are : express, nextjs, 
+vite(bundler for frontend and contains different frameworks like vanilla, react, vue etc), 
+axios(frontend mein request ko fetch karne ke liye kam ata hai, we use it as it gives extra functionalities for fetching request), 
+cors(this is used in bakend, iske help se we can whitelist all those request from front end which we want ki hamehsa listen ho, in general agar koi request ka origin aur port same nahi hota toh usko cors policy ke acording listen nahi karte but, jo important req hai usko whitelist karke using cors hamesha listen kar sakte hai, hence cors is cross origin resource sharing, so resources share kar sakte hai between frontend and backend but sare req coming from backend ko listen nahi karte, it depends on the cors policy, this issue can also be resolved using proxy), 
+mongoose, nodemon, 
+dotenv(isko import karloge apne index.js file mein toh jaha bhi .env file ka use ho raha hoga waha dhyan rakega ki uss file ka kuch bhi visible na ho)
+cookie-parser(client ke browser mein cookies ko set karne ya usko access karne mein help karta hai), 
+rest all info about packages are written in point 17.
+c) NPM not only have backend pakages but also have frontend packages like vite(which is a bundler).
+d) All the packages which run in node environment are in the npm.
+
+3).ENV(ENVIROMENT VARIABLES) PACKAGE
+a) jab production mein deploy karte hai there are several things which should not be visible(such are data, passwords etc) , also several things are there, so this package just helps us to make the project production ready so that we can deploy it now, also deploy karte waqt ya phir github pe push karte waqt bhi we put .env file in .gitignore file so that .env which contains imp info don't get pushed, .gitignore mein aur bhi files dal sake hai jo tumko push nahi karna hai.
+b) agar .env file mein kuch change kie ho toh server auto restart nahi hota hai even if you are using nodemon usko manually start karna padta hai.
+
+4) GITHUB CONFIGURATION USNG SSH
+Git configuration using SSH is a way to securely connect your local machine to GitHub / GitLab / Bitbucket without typing your username and password every time.
+SSH : SSH (Secure Shell) is a secure method to authenticate and communicate between two computers using encryption.
+In Git:
+Your computer = client
+GitHub/GitLab = server
+SSH verifies you are really you
+Now GitHub configuration using ssh means You generate a pair of keys (private + public) on your system, upload the public key to GitHub, and Git uses it to authenticate you automatically.  No passwords. No tokens. No repeated login.
+
+5) DEPLOYMENT
+koi bhi project ko deploy karne se phele we push all the code on GitHub repo we created and once it is done we can deploy all the code on servers like digital ocean, aws, etc which connects to our GitHub and create a live link of that project to which we can go and see the fully deployed project.
+
+6) PACKAGE.JSON
+a)By npm init command package.json file gets created, package.json is a file created by npm that stores project details, dependencies, and scripts, allowing npm to manage and run a Node.js project properly.
+b)In package.json, the "type" field tells Node.js how to interpret your JavaScript files — specifically which module system your project uses, there are tow options namely module and common js. The type field tells nodejs how to treat .js file in project.
+type : commonjs
+Key characteristics : Default in Node.js (if "type" is missing), Synchronous loading, Works everywhere in Node
+Older, stable system
+When to use CommonJS : Existing/legacy Node projects, Codebases using require(), Simple backend scripts, Some older npm packages.
+type : module
+Key characteristics : Standard JavaScript (ECMAScript), Supported in browsers & Node, Asynchronous loading, Better for modern tooling
+When to use ES Modules : New projects, Full-stack / frontend projects, Libraries meant for browser + Node, When using modern frameworks (React, Vite, Next, etc.), when using import, export.
+
+7)SYNCHRONOUS vs ASYNCHRONOUS LOADING
+Synchronous Loading : Synchronous loading happens one step at a time. The program waits for the current task to finish before moving to the next.
+How it works
+Code runs in a blocking manner
+If one task is slow, everything after it waits
+Asynchronous Loading
+What it means : Asynchronous loading does not block execution. The program can continue doing other work while waiting for a task to finish.
+How it works
+Non-blocking
+Uses callbacks, promises, or async/await
+
+8) API
+a) Every response come from server but Not every server response is an API response; only responses designed for program-to-program communication using a defined interface are considered APIs. In simple terms If the response is meant for another program to process → it’s an API, If the response is meant for a human to see → it’s not an API.
+API response will always give back some data and not UI and professionally to understand that data we can go to json formatter website and put all the api data and then we can see how that data is originally structured on database.
+
+b)Usually, API data comes from a database, but not always. Typical sources of API data: Database (MySQL, PostgreSQL, MongoDB, Redis, etc.) → most common, Another external API (payment gateway, weather API, OAuth), In-memory data / cache, Files (JSON, CSV, logs), Computed / derived data (business logic result). API is produced by server side logic(app.js program requests api) which may fetch if from database or other sources.
+
+c)Is the API requested by app.js : Yes — in a typical Node.js backend.
+
+9) BUNDLER
+A bundler in frontend development is a tool that collects, processes, and packages all your frontend files (JavaScript, CSS, images, etc.) into a format that the browser can efficiently understand and load.
+Think of a bundler as a packing machine for your frontend code. Modern frontend apps use: many JavaScript files, ES modules (import/export),CSS files, images, fonts, frameworks like React, Vue. Browsers can’t efficiently manage hundreds of files with different formats and dependencies on their own, hence bundlers are used.
+
+10) REACT
+a) React is also a framework for frontend.
+b) .jsx is mainly used for React — but it’s not React itself. .jsx is a JavaScript file extension that allows you to write HTML-like syntax (JSX) inside JavaScript. Also .jsx is only for react.
+
+11) STACKBLITZ, CODESANDBOX, GITHUB CODESPACES
+a) These are the online platform which gives us node like environment so NodeJS install karne ka aur local pe kam karne ka jhanjhat nahi hota we can just code in nodjs like environment online.
+
+12) WHAT DO WE KEEP IN FOLLOWING FILES OF BACKEND IN PRODUCTION GRADE PROJECT :
+a) MODELS : isme data ka structure aur uska organisation likte hai with help of mongoose which help nodejs code to interact with mongodb.
+
+b) MIDDLEWARES : isme we define ki jab client se request aye toh before going directly to server we can do some checks on that request, which is handled by middlewares.
+
+c) index.js : it is the entry point, index.js contains, Server startup logic, Database connection, Port configuration, thus it's purpose is that it Starts the server, Connects database, Handles environment setup.
+
+d) app.js : it is for error handling, it contains Express app creation, Middleware configuration, Routes setup, Error handling. Thus it's purpose is it defines how requests are processed, handles routing and middleware, but it does NOT start the server.
+
+e) db.js : in this the code to get connected with database is written with the help of moongose framework, and this file is exported at the end so that it gets imported in the index.js file.
+
+f) ROUTES : The routes folder contains files that define: Which URL (endpoint) responds to which request, and which controller handles it. Think of it as the traffic controller of your backend.
+client request -> routes -> controller -> model -> database.
+What routes actually do : A route: Matches a URL path (/users/login), Matches an HTTP method (GET, POST, etc.), Calls the correct controller function.
+
+g) CONTROLLERS : Handle incoming requests, run business logic (or call services), and send responses back to the client. Controllers are the brains behind each API endpoint(An API endpoint is a URL that returns structured data (usually JSON) for programs to consume, not UI for humans).
+
+
+13) DEV DEPENDENCIES
+a) A dev dependency is a package that is needed only during development, not when your application is running in production. Examples of dev dependencies
+nodemon – auto-restarts server during development
+eslint – checks code quality
+prettier – formats code
+jest / mocha – testing frameworks
+webpack / vite – build tools
+babel / typescript – code transpilers
+Now since these are dev dependency we install these using -D, example npm i -D nodemon.
+b) NODEMON : you know about this
+c) PRETTIER : In a production grade project lot of people contribute to this so everybody needs to be on the same page for how we write code, ki kitna tab spaces hoga, comma use kare line ke end mein ya semicolon etc, for this we use the prettier and in the prettierrc file in backend we list all such rules. Also note ek .prettierignore file bhi banta hai which we keep all such files jisme prettier wale rules na lage, for example .env.
+d)
+
+14) TRY-CATCH, ASYNC/AWAIT
+a) Try-catch : try–catch is used to handle errors safely. What it does : try → code that might fail,  catch → code that runs if an error happens, so catch is code that runs if error happens so our program doesn't crash if there is an error. Without try–catch, the app would stop.
+CODE : 
+try {
+  let x = JSON.parse("invalid json");
+} catch (error) {
+  console.log("Something went wrong");
+}
+b) Async/Await : async/await is used to handle asynchronous operations in a clean way.
+Asynchronous operations : These take time, some examples of such operations are : API calls, Database queries, File reading, Network requests, example code :
+async function getData() {
+  const data = await fetch("https://api.example.com");
+  return data;
+}
+async → function returns a promise
+await → waits for the promise to finish
+It makes async code look like normal synchronous code.
+c) WHY DOES ASYNC/AWAIT OPERATION REQUIRE TRY-CATCH :
+When an async operation fails, due to reasons such as API may be down, Database connection may fail, Network error may occur, These failures throw errors (reject promises). code without try-catch :
+async function getUser() {
+  const user = await fetchUserFromDB(); //if this fails → app crashes
+  return user;
+}
+code with try-catch in async/await
+async function getUser() {
+  try {
+    const user = await fetchUserFromDB();
+    return user;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+here in above code error is handled, so app keeps running and proper error message when error occurs is given.
+
+15) COOKIES : In backend terms, cookies are small pieces of data stored on the client (browser) that the server uses to maintain state across HTTP requests. HTTP is stateless → cookies help the backend remember users. A cookie is:
+A key–value pair Sent by the server which is stored by the browser(client) and automatically sent back to the server on future requests. So on first time of request server will give response + cookies and then next time when you request to the server the server will remember you because with you request the stores cookie will also go.
+
+16) .JSON : JSON (JavaScript Object Notation) is a lightweight data format used to store and exchange data between systems. It is: Text-based, Human-readable, Language-independent, Very easy for machines to parse. .json data looks like this : 
+{
+  "id": 101,
+  "name": "Someone",
+  "role": "Student",
+  "skills": ["C++", "DSA", "Backend"],
+  "active": true
+}
+Key rules: Data is in key : value pairs, objects → { }, Arrays → [ ], Strings → " " ,(Numbers, booleans, null → without quotes).
+
+17) NODE PACKAGES 
+a) Express
+
+b) Nextjs
+
+c) Vite : bundler for frontend and contains different frameworks like vanilla, react, vue etc.
+
+d) Axios :frontend mein request ko fetch karne ke liye kam ata hai, we use it as it gives extra functionalities for fetching request.
+
+e) Cors : this is used in bakend, iske help se we can whitelist all those request from front end which we want ki hamehsa listen ho, in general agar koi request ka origin aur port same nahi hota toh usko cors policy ke acording listen nahi karte but, jo important req hai usko whitelist karke using cors hamesha listen kar sakte hai, hence cors is cross origin resource sharing, so resources share kar sakte hai between frontend and backend but sare req coming from backend ko listen nahi karte, it depends on the cors policy, this issue can also be resolved using proxy. 
+
+f) Mongoose
+
+g) Nodemon 
+
+h) dotenv : isko import karloge apne index.js file mein toh jaha bhi .env file ka use ho raha hoga waha dhyan rakega ki uss file ka kuch bhi visible na ho.
+
+i) Cookie-parser : client ke browser mein cookies ko set karne ya usko access karne mein help karta hai.
+
+j) Bcrypt : It is a password-hashing library. It never stores passwords directly. It converts passwords into irreversible hashes. If the db is leaked everyone's password is compromised. So it hashes the password many times so if any user signs up, it hashes the password and if the user logins again then the password it puts the backend compares that password with the hashed password. Password never revealed, even backend doesn’t know real password.
+
+k) JWT : JWT (JSON Web Token) is a secure "token" used to identify logged-in users.
+It is: A long encoded string, Signed by the server, Sent to the client.
+Why JWT is needed : HTTP is stateless — server forgets you after every request.
+JWT says: “This request is from the same logged-in user.”
+What a JWT looks like : xxxxx.yyyyy.zzzzz Three parts : Header, Payload (user info), Signature (security).
+ACCESS TOKEN : temporary pass to use APIs.
+REFRESH TOKEN(ALSO CALLED SESSION STORAGE) : What is a refresh token? A refresh token is: Long-lived token, Used to get a new access token, NOT sent with every request. See access token jaldi expire kar jata hai so this is where refresh token helps, refresh token both user aur database ke pass hota hai so agar same user sign kia hai aur uske pass hai refresh token hai toh usko quietly ek new access token banake de dia jata hai.
+Why do we need refresh tokens? If access tokens expire quickly: User would need to log in again frequently
+Refresh token: Quietly gets a new access token and keeps user logged in. Refresh token is in cookie of the user browser or in the request body, which the user sent.
+
+l) MULTER ADN EXPRESS-FILEUPLOAD : In Node.js + Express, file upload is not supported by default.
+Packages like multer and express-fileupload exist to solve this. MULTER : Multer is a middleware for handling file uploads in Express. It is: Very powerful, Very configurable, Industry-standard. EXPRESS-FILEUPLOAD : express-fileupload is a simple and lightweight file upload middleware. It focuses on ease of use, not heavy configuration.
+
+m) CLOUDINARY : Cloudinary is a cloud-based media management service that stores, optimizes, and delivers images, videos, and other files. Instead of keeping uploaded files on your own server, you upload them to Cloudinary and use a URL to access them anywhere. What does the Cloudinary npm package do : The Cloudinary npm package lets your backend: Upload files to Cloudinary, Delete files, Transform images (resize, crop, compress), Secure uploads using API keys.
+
+n) fs : this is pre-built with nodejs and we don't need to install it, we can directly import it and use it, it is used to deal with file handling agar file mein kuch changes karna hai then we can use fs.
+
+18) HTTP 
+a) HTTP HEADERS : In HTTP, a header is just extra information sent along with a request or a response. Headers tell the server or client how to handle the data, not the data itself. An HTTP header is a key–value pair sent with:
+an HTTP request, or an HTTP response. Headers exists to: Describe the data, Control caching, Authenticate users, Secure requests, Handle content formats.
+There are 4 types of headers : 
+Request Headers -> Sent by the client to the server , 
+Response Headers -> Sent by the server to the client, 
+Representation (Entity) Headers -> Describe the body of the request or response, 
+General Headers -> Used by both request and response.
+Cors Headers -> it tells which website are allowed to access you backend api.
+Security Headers -> Security headers protect your users from attacks like: XSS, Clickjacking, Data injection, Downgrade attacks. These are response headers sent by the backend. They instruct browsers to enforce security policies and prevent common attacks.
+
+b) HTTP METHODS : we know this, like get, post, put, patch etc.
+c) HTTP STATUS CODE : we know this like the ones which start with 4 are for client side error and one which start with 5 are server side error, etc.
+
+19) POSTMAN
+a) It is a app to test if your backend works properly or not, you can send any request post, get, put whatever you want ki ye request backend acha se cater kar raha hai ki nahi and we can check that using postman.
+b) Also if you don't have any frontend toh using postman we can send any type of data to our backend to check ki wo data ke sath proper action ho raha hai ki nahi backend mein.
+c) COLLECTION, ENVIRONMENT : from 25:19 to 30 mins of video 14 of backend of chai and code you can understand the use of collection and environment while using postman, and also will explain how to configure postman to give request to the backend in a proper way.
+  
+
+GENERAL INFORMATION
+1) FRAMEWORK AND LIBRARY : 
+A library(You are the Boss) is a collection of helper functions or tools that you call when you need them. You decide when to use the library and how to fit it into your code. 
+A framework(The Framework is the Boss) provides a "skeleton" or a template. It defines the structure of the application and tells you where to put your code, it handles "boilerplate" tasks (repetitive code) so you can focus on unique business logic.
+2) UTILITY 
+In web development, a utility is a small, reusable helper that performs a specific, common task, so you don’t have to rewrite the same code again and again.
+3) Server can listen to the on several ports as our laptop has several ports(type c, type b etc) similary there are several virtual ports where  it can listen to any request, jisme se many ports are free so we can use some of those ports to listen such as we wrote const port = 3000, so we are listening on port 3000, if port 3000 tumhare computer pe hi hai so if you go on localhost3000, waha pe wo request ko listen karega.
+4) Most of the packages such as express ko npm hi manage karta hai aur uske help se hi we install these packages, but koi bhi package ko kyu install kar rahe hai, wo kaha help karega we should know, like express, so we know ki express hamko frontend se jo request ayega uska cater karne mein help karega so we installed express using npm.
+5)BAD PRACTISE : In some companies, jab frontend mein jo likhe hai use bundler ke help se dist folder create ho jata hai jisme sara frontend ka files aa jata hai aur wo ye dist folder backend mein dal dete hai jisse kuch cost bachta hai but is a bad practise as if you want to add something to frontend toh jo changes karenge wo nahi dikhega fronted mein since sabkuch bundle ho chuka hai so backend se wo dist folder delete karna hoga and changes karke phirse bundle karna hoga which is repetitive and a bad practise.
+6) GIT IGNORE : ".gitignore generator" is a website where all the things which should be kept in .gitignore for any environment such as node generate kar deta hai, so we can directly copy it in our .gitignore file as it is, so it is useful.
+7) agar .env file mein kuch change kie ho toh server auto restart nahi hota hai even if you are using nodemon usko manually start karna padta hai.
+8) Frontend ka sara errors aur console inspect mein dekh sakte hai browser ka aur backend ka sara terminal pe hota hia.

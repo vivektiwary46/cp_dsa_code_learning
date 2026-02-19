@@ -1,0 +1,55 @@
+GREEDY ALGORITHMS : 
+1)It is a simpler approach used for optimization problems
+Idea: When we have a choice to make, make the one that looks best right now
+Make a locally optimal choice in hope of getting a globally optimal solution
+Greedy algorithms don’t always yield an optimal solution
+Makes the choice that looks best at the moment in order 
+to get optimal solution.
+
+2)In many questions you need to sort something in order to go greedy, now it is crucial, what data you sort, now if there are many options try all and think which one helps us to greedily solve the questions.
+
+3)Many time you don't need to sort anything you need to use the data as it is and think just in greedy way as told in 1 to solve the questions.
+
+4)HOW TO RECOGNISE A GREEDY PROBLEM : 
+A)The Optimization Goal: The problem will almost always ask you to find a minimum or maximum of something.
+"Find the minimum cost to connect all cities." (Minimum Spanning Tree)
+"Find the maximum number of activities you can attend." (Activity Selection)
+"Make change with the fewest coins." (Coin Change Problem)
+"Find the shortest path from a source to all other nodes." (Dijkstra's Algorithm)
+If it's not an optimization problem, it's probably not a greedy problem but don't confuse it with dynamic programming, in dp also we need to do optimization (i.e. questions asks to find min or max of something) but in that we did that by exploring all the paths i.e. the recursion way, and here we are doing it by greedy, i.e. locally making best choices in order to optimize the end result.
+
+B)The "Greedy Choice" Property (The Litmus Test): This is the most important characteristic. You must be able to prove (or be very confident) that making a locally optimal choice (the choice that looks best at the current moment) will lead to a globally optimal solution.
+Ask yourself this question: "Can I make a simple choice now, without knowing the future, that is guaranteed to be part of the final optimal answer?"
+Example: Activity Selection. You have a list of activities with start and end times. You want to attend the maximum number of activities.
+Greedy Choice: Sort the activities by their finish times. Always pick the next available activity that finishes the earliest.
+Why it works: By picking the activity that finishes earliest, you free up your schedule as quickly as possible, maximizing the time available for subsequent activities. This local choice is probably part of the global optimum.
+
+C)The Optimal Substructure Property: Like Dynamic Programming, a greedy problem has optimal substructure. This means that after you make your first greedy choice, the remaining problem is a smaller and of the same nature, independent version of the original problem.
+Example: Activity Selection (again). After you choose the first activity (the one that finishes earliest), the problem becomes "find the maximum number of activities you can attend from the remaining activities (it has the same nature as the original one) that don't conflict with the one you just chose." It's the exact same problem, just on a smaller set of data.
+
+D)No Looking Back (Irreversible Choices): A key difference from Dynamic Programming or backtracking is that a greedy algorithm never reconsiders its choices. Once a decision is made, it's final. If you find yourself thinking, "I might need to undo this choice later," it's probably not a greedy problem.
+
+5)HOW TO UTILIZE THE GREEDY APPROACH (STRATEGY TO SOLVE THE QUESTION)
+STEP 1 :Step 1: Identify Your Greedy Choice This is the most critical step. What does "best" mean in the context of the problem? You need to define the criterion that you will use to make your selection at each step. This often involves sorting.
+Is it the activity with the earliest finish time?
+Is it the edge with the minimum weight? (Prim's/Kruskal's for MST)
+Is it the item with the highest value-to-weight ratio? (Fractional Knapsack)
+Is it the coin with the largest denomination? (Coin Change)
+
+STEP 2 :Prepare Your Data Most greedy algorithms begin by sorting the input data according to the greedy choice criterion you identified in Step 1. This makes it easy to iterate through the items and pick the "best" one next.
+
+STEP 3 :Build the Solution Iteratively Create a loop that repeatedly does the following:
+Select: Pick the best available item from your sorted list.
+Validate: Check if this item is a valid choice (e.g., it doesn't conflict with previously chosen items, doesn't form a cycle in an MST).
+Add: If it's valid, add it to your solution and update your state (e.g., add its value to the total, mark nodes as visited).
+Repeat: Continue until the problem is solved.
+
+STEP 4 :Test Your Choice with a Counterexample Before you start coding, always try to break your greedy choice. Think of a tricky scenario where the best immediate choice leads to a bad overall result.
+Classic Failure Case: The Coin Change Problem.
+Problem: Give change for 6 cents using coins of denominations {1, 3, 4}.
+Greedy Choice: Pick the largest coin first.
+Greedy Solution: Pick 4, then 1, then 1. Total: 3 coins.
+Optimal Solution: Pick 3, then 3. Total: 2 coins.
+Conclusion: The greedy approach fails here. This problem requires Dynamic Programming.
+
+6)FRACTIONAL KNAPSACK : Given two arrays, val[] and wt[] , representing the values and weights of items, and an integer capacity representing the maximum weight a knapsack can hold, determine the maximum total value that can be achieved by putting items in the knapsack. You are allowed to break items into fractions if necessary, this will be solved by greedy and the greedy is that we want to take as less weight we can take for more and more value, so we sort the array using val by weight and keep taking the val and at last if we can only take some fraction of the weight then we will do that and find the final total value, the code can be seen here : https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1

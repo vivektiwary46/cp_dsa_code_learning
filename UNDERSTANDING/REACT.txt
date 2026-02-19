@@ -1,0 +1,38 @@
+REACT LEARNING
+1) VITE : Vite is an npm package that helps you run and build frontend applications fast.
+When you install or use Vite, it:
+Starts your frontend app, Shows it in the browser, Reloads changes instantly, Prepares the app for production. It is not a framework, just a tool.
+
+Why is Vite useful in frontend?
+Without Vite: Browser doesn’t understand JSX / TypeScript, You’d have to manually refresh pages, No optimization for production.
+With Vite: JSX, TS, modern JS → works automatically, Instant reload when you save a file, Fast startup, Easy production build. It makes frontend development easy and fast.
+
+Why is it called a development server?
+Because during development, Vite runs a local server like: http://localhost:5173
+This server: Serves your frontend files, Updates the browser when code changes, Exists only while developing, It is not the real production server.
+
+What does this “server” actually do?
+In simple words, the Vite dev server: Converts your code (JSX, TS) → browser-readable JS, Sends files to browser when requested, Reloads only the changed part (HMR).
+It creates an environment where browsers can understand your modern frontend code.
+
+2) react-router-dom : It is a npm package. React apps are single-page applications (SPA), so:
+The page does not reload, But the URL still needs to change, Different components should show for different URLs.
+react-router-dom makes this possible.
+react-router-dom enables client-side routing in React apps, allowing navigation between components(like /login -> login component, / -> home component etc.) without page reloads.
+
+3) lucide-react : It is a npm package using which we can put icons in react app.
+
+4) react-hot-toast : It is a npm package using which we can have notifications in react app.
+
+5) react-player : It is a npm package using which we can play videos in react app.
+
+6) Installing Tailwindcss + vite : if you write this on browser it will take you to a site. we need to install some npm packages to use tailwindcss in vite, we can see about them in from https://tailwindcss.com/docs/installation/using-vite.
+
+7) Clerk : Clerk is an authentication and user management service for web apps. 
+What problem does Clerk solve : Handling login, signup, authentication, and users is complex and repetitive. Clerk does it for you.
+What does Clerk provide : Login / Signup UI, Email & password auth, OAuth (Google, GitHub, etc.), Session management, User profiles, Secure tokens. All ready-made.
+Clerk ko backend mein bhi package install karna hota hai uska as user ka sara data clerk ke pass hoga as login clerk hi karwaya tha.
+
+8) Prebuilt ui : this site has many prebuilt ui, like footer, navbar etc and you get the code also.
+
+9) Frontend ka sara errors aur console inspect mein dekh sakte hai browser ka aur backend ka sara terminal pe hota hia.

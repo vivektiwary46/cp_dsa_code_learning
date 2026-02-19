@@ -1,0 +1,13 @@
+YOU CAN SEE THE INTIAL LEARNINGS OF RECURSION WRITTEN IN RECURSION WORDPAD
+LEARNING FROM RECURSION QUESTIONS
+1) If in question you need to apply recursion on a array and it has duplicate elements and in the solution you only need distinct elements, then before applying recursion on that array just put that array into a set and then again into a vector in order to get only the distinct elements of the array and then you can apply recursion on this vector.
+
+2)Primary ways to get subsequence in C++ are recursion, bit manipulation, iteration all three has time complexity as O(n*2^n) if the array on which subsequence is to be generated is of length n.
+Iteration : This approach builds the set of subsequences step by step without using recursion. You start with an empty set and for each element in the input sequence, you create new subsequences by adding that element to all the subsequences you've already found.
+The Idea: Imagine you have all subsequences for the first k elements. To get all subsequences for the first k+1 elements, you simply take the ones you already have, and then create copies of them with the (k+1)th element appended. You start with just an empty subsequence and progressively build up.
+
+3)Use of return in a void function : return immediately terminates the void function you are working on, but in recursion what is will do, it will do the same only it will immediately terminate the void function you are working on and will return to the previous caller function in the stack if there is any, it will not completely stop the recursion(misconception) is will just return to the caller function if there is any in the stack.
+
+4)Anywhere in space in a recursion if any type of return statement is used then the recursion doesn't stops then and there it returns to the caller function waiting in stack, it is only when all the waiting function in stack gets over is the recursion completed.
+
+5) This is not particularly for recursion but for any function in general you have formed, when you make a function and let's say it return type is int, in main you doesn't necessarily write int ans = f(.....), you can just call the function as it is as f(.....) and let's say it returns int type but also updates some array you have passed and you want to return that array only in main then just calling f(.....) would do then the array get's updated and you can output it or whatever you want to do with it.

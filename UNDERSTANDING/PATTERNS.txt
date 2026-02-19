@@ -1,0 +1,93 @@
+For patterns you can also check 455 question sheet of striver, each topic is divided into sections, like in dp, dp on subsequences and dp on strings and so on.
+
+GOOD QUESITONS
+1) LEETCODE : 1970, 1931, 3786 
+
+NOTE : 1) for each topic of patterns i have also included thoughts in some points which helps to think in different way to solve that type of topic.
+ 
+GENERAL THOUGHTS FOR QUESITONS :
+a) whenever you see something related to division, once you can think about remainder(which you will get from modulo).
+b) normal bfs mein initially, ek node push karte hai multisource bfs mein initially ek se jada node push karte hai.
+c) In a tree there is only one unique path between any two nodes.
+d) say in a graph each node belong to a type. now sare similar type of node ke beech mein kitna edges hai agar nikalna hai, toh har pair of nodes which belong to same type agar nikalne lage toh it will take a lot of time, so we use this : toh hamlog node ke bare mien na sochke edges ke bare mein sochte hai, i.e. ek edge kinte pairs of same type of node ke beech ke path ko contribute karega, like ek edge hai toh usse neeche wale graph mein type 1 ka 2 node hai aur usse upar wale node mein type 1 ka 3 node hai toh wo edge 3*2 = 6 pairs of such nodes ke path ke beech contribute karega, similarly sare edges ke liye kar sakte hai, so it will take less time, this was a good concept and can be used in many places. used in leetcode 3786.
+
+PATTERNS :-
+1) SLIDING WINDOW
+a)Keywords :- subarray, substring, subsequences, find a target
+b)solve leetcode 3795, good question.
+
+2) TWO POINTER
+Keywords :- duplicate find, palindrome find, reverse some section, anything related to pair,
+two sorted thing are given and we want to merge them.
+
+3) DIVIDE AND CONQUER ALGORITHM & BINARY SEARCH
+Keywords :- sorted kahi likha ho toh
+
+4) DP
+Keywords :- you know it
+a) DP on subsequences mein take and notake se recursion aur phir tabulation waghera likh ke solve karne ka try karna.
+b) DIGIT DP : jab bhi range dia ho [l, r] and constraints on l and r are high, like 1 <= l <= r < 1e9 or 1e18, and l to r numbers ke digit pe kam karna hai tab digit dp use kar sakte hai, copy mein exp plus code likhe hai.
+c) LCS : Jab bhi subsequence type ka lage toh lcs wala dp table ka use karke jo question mein bola hai karne ke liye wo try kar lia karo dp table mein karke, many a times it work
+
+
+5) BACKTRACKING
+a) this is also recursion, i.e. jab sara possibility explore karna ho toh, but in this we just need to meet a condition so out of all possibility even if one gets fulfilled we return true, i.e. as soon as we get any one of the possibility fulfills our requirement ham true return kar dete hai, sare possibility pe jane ka jarurat nahi, isme ham min, max of all possibility type ka nahi karte, that we do in dp, isliye isme most of the time memoisation ka jarurat nahi padta but in worst case sometimes jarurat pad bhi sakta hai.
+b) in this also we can do memoisation, i.e. to find that one possibility jo true ho jaye, in that path kuch conditions ko true hona hoga toh un condition ko memoize kar sakte hai taki jo final possibility true nahi hua toh other path le toh, uske path mein bhi aise same condtions aaye toh wo already unka pata ho hame, and this memoization is required only when normal backtracking se jada time lag raha ho.
+ 
+
+6) GREEDY ALGORITHM
+Keywords :-
+
+7) GRAPH 
+A) BFS : we know that if we want to do anything in level wise or first come first serve basis then this can be used but this intuition that the questions asks you to do stuffs level wise has to be there as in some questions after reading question we can deduce that we need to solve in increasing fashion of time so this is also type of level wise, similarly there can be many sayings in the question which will help us understand that we need to thing level wise, so listed some of them below :
+a)increasing fashion of time
+
+B) DSU : 
+a) In questions point of view, if we need to check something while dynamically making the graph then dsu can be helpful as dsu make the graph dynamically (and by dynamically making the graph se matlab hai ki 2 nodes ko join kar kar ke step by step edges ka input leke graph banana and in that proccess if we need to strore some information then this dsu concept is uesful).
+b) matrix type ka question jisme dsu lagane ka intuition aye toh every (r, c) of the matrix can be made a node using node = col * r + c; where col = total number of columns in the matrix.
+
+
+
+8) PRIORITY QUEUE
+a) whenever you need the maximum or minimum element then we can think of it, or max or min element after some traversal through an array or anything of that sort, basically at every point if you need max or min element then we can think of this.
+b) we can use it in greedy sometimes.
+
+9) RECURSION
+a) whenever we need to try out all possible ways recursion can be used and recursion pe kis pattern pe question ata hai to know that lecture 7 of striver playlist of recursion can be watched.
+b) also in lay man terms we can say ki if we are at i and we want to know what is f(i) and we are dependent on f(i-1) to know the answer of f(i) then also recursion can be used. Here f is some function which returns something.
+
+10) PREFIX SUM
+a) if in question if we need to do things consecutively, i.e. if consecutive word is used then this can be used
+b) Thought : we should not always calculate basic prefix sum and solve the problem, sometimes multiplication of two arrays can be done and saved some third array as prefix sum, or even division of two arrays can be saved and can be used to solve the problem.
+
+11) BIT MANIPULATION
+
+12) STACK, QUEUE, DEQUEUE
+A) STACK :
+a)Do I need to know the 'most recent' thing I saw to make a decision about the 'current' thing?" If yes, it's a Stack. Else do I need to know the 'most recent', thing i saw that too in some specific way like most recent greater or smaller (i.e. stack should have kept element in increasing or decreasing fashion) element then we can use monotonic stack. for example : Balanced brackets. 
+b)we can also think about stack when we feel we need to do recursive solution.
+c)MONOTONIC STACK : A monotonic stack is a stack that maintains its elements in a specific order—either increasing or decreasing at all times. It's a technique not a data structure. Toh jab bhi question mein lage ki stack mein elements ko ek specific order mein rakhna hai (increasing or decreasing only) then monotonic stack ke bare mein soch sakte hai aur specific order means while pushing element or removing also that specific order must be maintained, tabhi question solve hoga. (as did in next greater element, can see video of this in stack playlist of striver).
+
+13) HASHMAP
+a) whenever question mein duplicate elements, ya counting, frequency type kuch karna ho then we can use hashmap.
+b) If you are looking for a pair of numbers that satisfy a specific condition (like a sum or a difference), you use the HashMap to "look into the past", the intuition is that Instead of nested loops, for every element x, check if the "complement" (Target - x) is already in the map.
+c) If your algorithm requires checking if (exists in list) repeatedly, a list search is O(n), but a HashMap/HashSet lookup is O(1).
+d) If we need to group elements on the basis of some property(called as key in map) then we can think of hashmap.
+
+14) SORTING 
+a) The "Greedy" Choice Pattern
+When the problem asks you to maximize or minimize something by making a series of local choices, you almost always need to sort first to ensure your "best" option is available at the start. Intuition: To be "greedy," you need an ordered list so you can pick the smallest, largest, or earliest finishing item first. So whenever you want to be greedy you can think of sorting things.
+b) The "Two-Pointers" Pattern
+Many problems involve finding a pair or triplet that meets a condition. Sorting allows you to move pointers from both ends (i and j) toward the middle, significantly reducing search time. Intuition: If the array is sorted, you know exactly which direction to move your pointers (increment i to increase the sum, decrement j to decrease it).
+c) The "Difference/Closeness" Pattern
+If you need to find elements that are "closest" to each other or have the "minimum difference." Intuition: In an unsorted array, the two closest numbers could be anywhere. In a sorted array, the two closest numbers must be neighbors.
+d) In searching, i.e. for search optimization such as binary search we need to do sorting.
+e) The "Interval/Overlap" Pattern
+Problems involving time, ranges, or overlapping segments. Intuition: By sorting by the start time, you only need to compare the current interval with the previous one to check for overlaps.
+
+15) GREEDY
+a) To complete greedy approach you might need different data structure such as priority queue.
+
+16) BINARY SEARCH 
+a) Whenever we need to optimize searching, we should think of binary search.
+b) whenever you do binary search on double numbers the loop won't terminate as (lo <= hi) instead you can do the binary search operation for like 100 iterations as for (int iter = 0; iter < 100; iter++) and then inside this the normal binary search stuff, or you can make the loop terminate using while(hi - lo > 1e-7).

@@ -1,0 +1,3 @@
+quick show
+1) pages folder : har url pe jane pe kya dikhega wo banaya hai, since different pages hai so different url so router banana hoga
+2) components folder : isme wo hai jo sare pages pe dikega like navbar, footer etc.
